@@ -1,0 +1,81 @@
+{% load static %}
+<html>
+<head>
+	<title>САЙТ ПО ОХРАНЕ ТРУДА</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all"/>
+
+	<link rel="shortcut icon" href="css/images/favicon.ico" />
+
+</head>
+<body>
+<div class="shell">
+	<div class="border">
+
+		<div id="navigation">
+			<ul>
+			    <li><a href="/" class="active">Главная</a></li>
+			    <li><a href="/admin">Админ панель</a></li>
+
+			</ul>
+		</div>
+
+		<div id="main">
+			<div id="content" class="left">
+
+				<div class="projects">
+					<h3>{{ ticket.title }}</h3>
+                    <p align="center">
+                      <img src="{{ ticket.img.url }}" width="50%"/>
+                    </p>
+					{% for quest in question %}
+						<div class="question">
+							{{ quest.question }}
+						</div>
+					{% endfor %}
+					<div class="item">
+						<div>
+							<p align="right"> Автор: {{ ticket.author }}</p>
+						</div>
+						<div class="cl"> </div>
+					</div>
+				</div>
+			</div>
+			<div class="form-comment">
+				<h3>Оставить комментарий</h3>
+				<div>
+					<form action="{% url 'add_comments' ticket.id %}" method="post">
+						{%csrf_token%}
+						<div><label>Ваш комментарий</label></div>
+						<div><textarea name="text_comments" rows="7" cols="100 "></textarea></div>
+						<div>
+							<label>Ваше имя</label>
+							<input type="text" name="name">
+						</div>
+						<div>
+							<label>Ваш email</label>
+							<input type="email" name="email">
+						</div>
+						<div><input type="submit"></div>
+					</form>
+				</div>
+			</div>
+			<div>{% for comment in ticket.comments_set.all %}
+				<div class = "view-comment">
+				<h4>{{ comment.name  }}</h4>
+				<p>{{ comment.text_comments }}</p>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="cl">&nbsp;</div>
+		</div>
+
+
+	</div>
+
+	<div id="footer">
+		<p class="copy right">Copyright &copy;  2022 </p>
+	</div>
+</div>
+</body>
+</html>
