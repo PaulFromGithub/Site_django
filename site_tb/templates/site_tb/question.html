@@ -28,11 +28,12 @@
                     <p align="center">
                       <img src="{{ ticket.img.url }}" width="50%"/>
                     </p>
-					{% for quest in question %}
-						<div class="question">
-							{{ quest.question }}
-						</div>
-					{% endfor %}
+					<div>
+						{% for i in question_list %}
+						{{ i }}
+						<br>
+						{% endfor %}
+					</div>
 					<div class="item">
 						<div>
 							<p align="right"> Автор: {{ ticket.author }}</p>

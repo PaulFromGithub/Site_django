@@ -12,12 +12,14 @@ class TicketView(View):
 class TicketDetail(View):
     def get(self, request, pk):
         ticket = Ticket.objects.get(id=pk)
-        return render(request, 'site_tb/question.html', {'ticket': ticket})
+        questions = Question.objects.all
+        return render(request, 'site_tb/question.html', {'ticket': ticket, 'question_list': questions})
 
-class QuestionView(View):
-    def get(self, request):
-        questions = Question.objects.all()
-        return render(request, 'site_tb/question.html', {'questions': questions})
+#     def get_question(self, request, pk):
+#
+#         return render(request, 'site_tb/question.html', )
+# # class QuestionView(View):
+
 
 class AddComments(View):
     def post(self, request, pk):
