@@ -29,8 +29,8 @@
                       <img src="{{ ticket.img.url }}" width="50%"/>
                     </p>
 					<div>
-						{% for i in question_list %}
-						{{ i }}
+						{% for i in ticket.question_set.all %}
+						<h2><a href="{{ question.id }}">{{ i.text_questions }}</a></h2>
 						<br>
 						{% endfor %}
 					</div>

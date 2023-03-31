@@ -14,6 +14,7 @@ class Ticket(models.Model):
     def __str__(self):
         return f'{self.title}'
 
+
 class Question(models.Model):
     text_questions = models.TextField('Текст вопроса')
     question = models.ForeignKey(Ticket, verbose_name='Публикация', on_delete=models.CASCADE)
@@ -26,16 +27,16 @@ class Question(models.Model):
         return f'{self.text_questions}'
 
 
-# class Answer(models.Model):
-#     text_answer = models.TextField('Текст ответа')
-#     answer = models.ForeignKey(Question, verbose_name='Публикация', on_delete=models.CASCADE)
-#
-#     class Meta:
-#         verbose_name = 'Ответ'
-#         verbose_name_plural = 'Ответы'
-#
-#     def __str__(self):
-#         return f'{self.answer}'
+class Answer(models.Model):
+    text_answer = models.TextField('Текст ответа')
+    answer = models.ForeignKey(Question, verbose_name='Публикация', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Ответ'
+        verbose_name_plural = 'Ответы'
+
+    def __str__(self):
+        return f'{self.text_answer}'
 
 
 class Comments(models.Model):
