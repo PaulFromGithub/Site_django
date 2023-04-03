@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from .form import CommentsForm
-from .models import Ticket, Answer
+from .models import Ticket
 
 
 class TicketView(View):

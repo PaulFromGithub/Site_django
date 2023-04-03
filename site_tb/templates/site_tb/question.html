@@ -30,7 +30,7 @@
                     </p>
 					<div>
 						{% for i in ticket.question_set.all %}
-						<h2><a href="{{ question.id }}">{{ i.text_questions }}</a></h2>
+						<h2><a href="/answer">{{ i.text_questions }}</a></h2>
 						<br>
 						{% endfor %}
 					</div>
