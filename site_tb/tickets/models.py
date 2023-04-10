@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 
 class Ticket(models.Model):
@@ -14,10 +15,14 @@ class Ticket(models.Model):
     def __str__(self):
         return f'{self.title}'
 
+    # def get_absolute_url(self):
+    #     return reverse('ticket', kwargs={'id': self.id, 'name': self.title})
+
 
 class Question(models.Model):
     text_questions = models.TextField('Текст вопроса')
     question = models.ForeignKey(Ticket, verbose_name='Публикация', on_delete=models.CASCADE)
+    img = models.ImageField('Изображение', upload_to='image/%Y')
 
     class Meta:
         verbose_name = 'Вопрос'
@@ -25,6 +30,9 @@ class Question(models.Model):
 
     def __str__(self):
         return f'{self.text_questions}'
+
+    # def get_absolute_url(self):
+    #     return reverse('question', kwargs={'id': self.id, 'name': self.text_questions})
 
 
 class Answer(models.Model):
