@@ -13,8 +13,8 @@ class TicketView(View):
 class TicketDetail(View):
     def get(self, request, pk):
         ticket = Ticket.objects.get(id=pk)
-        questions = Question.objects.all()
-        return render(request, 'site_tb/question.html', {'ticket': ticket, 'question_list': questions})
+        # questions = Question.objects.all()
+        return render(request, 'site_tb/question.html', {'ticket': ticket})
 
 
 class AddComments(View):

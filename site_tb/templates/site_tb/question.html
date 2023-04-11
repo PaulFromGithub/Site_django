@@ -18,18 +18,18 @@
 		<div id="main">
 			<div id="content" class="left">
 				<div class="projects">
-					<h3>{{ ticket.title }}</h3>
+					<h1>{{ ticket.title }}</h1>
                     <p align="center">
-                      <img src="{{ ticket.img.url }}" width="50%"/>
+                      <img src="{{ ticket.img.url }}" width="30%"/>
                     </p>
-					<div>
-						{% for i in ticket.question_set.all %}
+					<div class="content_text">
+							{% for i in ticket.question_set.all %}
 						<h2>{{ i.text_questions }}</h2>
-						{% for question in question_list %}
-						{{ question.text_questions }}
-						{% endfor %}
 						<br>
-						{% endfor %}
+							{{ i.answer_set.get }}
+						<p>{{ text_answer }}</p>
+						<br>
+							{% endfor %}
 					</div>
 					<div class="item">
 						<div>
