@@ -8,7 +8,7 @@ body {
     background: url() repeat 0 0;
 }
 
-a { color: #44ff00; text-decoration: none; cursor:pointer; }
+a { color: #0000ff; text-shadow: #FC0 1px 0 10px; cursor:pointer; }
 a:hover { text-decoration: underline; }
 
 a img { border: 0; padding: 10px 50px 20px; }
