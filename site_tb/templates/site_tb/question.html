@@ -10,33 +10,28 @@
 <div class="shell">
 	<div class="border">
 		<div id="navigation">
-			<ul>
-			    <li><a href="/" class="active">Главная</a></li>
+			<ul class="active">
+			    <li><a href="/">Главная</a></li>
 			    <li><a href="/admin">Админ панель</a></li>
 			</ul>
 		</div>
 		<div id="main">
-			<div id="content" class="left">
+			<div id="content">
 				<div class="projects">
-					<h1>{{ ticket.title }}</h1>
-                    <p align="center">
-                      <img src="{{ ticket.img.url }}" width="30%"/>
-                    </p>
-					<div class="content_text">
+					<div class="image left">
+							<h1>{{ ticket.title }}</h1>
+							<br>
+							<img src="{{ ticket.img.url }}" width="100%"/>
+						</div>
+					<div class="text left">
 							{% for i in ticket.question_set.all %}
-						<h2>{{ i.text_questions }}</h2>
-						<br>
+						<h3>{{ i.text_questions }}</h3>
 							{{ i.answer_set.get }}
 						<p>{{ text_answer }}</p>
 						<br>
 							{% endfor %}
 					</div>
-					<div class="item">
-						<div>
-							<p align="right"> Автор: {{ ticket.author }}</p>
-						</div>
 						<div class="cl"> </div>
-					</div>
 				</div>
 			</div>
 			<div class="form-comment">
@@ -72,7 +67,7 @@
 	</div>
 
 	<div id="footer">
-		<p class="copy right">Copyright &copy;  2022 </p>
+		<p class="copy right">Copyright &copy;  2023 </p>
 	</div>
 </div>
 </body>

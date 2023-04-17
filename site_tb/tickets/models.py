@@ -22,7 +22,7 @@ class Ticket(models.Model):
 class Question(models.Model):
     text_questions = models.TextField('Текст вопроса')
     question = models.ForeignKey(Ticket, verbose_name='Публикация', on_delete=models.CASCADE)
-    img = models.ImageField('Изображение', upload_to='image/%Y')
+    img = models.ImageField('Изображение', upload_to='image/%Y', blank=True)
 
     class Meta:
         verbose_name = 'Вопрос'

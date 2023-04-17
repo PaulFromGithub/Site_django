@@ -4,24 +4,19 @@
 	<title>САЙТ ПО ОХРАНЕ ТРУДА</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
-
 	<link rel="shortcut icon" href="css/images/favicon.ico" />
-
 </head>
 <body>
 <div class="shell">
 	<div class="border">
-
 		<div id="navigation">
-			<ul>
-			    <li><a href="/" class="active">Главная</a></li>
+			<ul class="active">
+			    <li><a href="/">Главная</a></li>
 			    <li><a href="/admin">Админ панель</a></li>
-			    
 			</ul>
 		</div>
-
 		<div id="main">
-			<div id="content" class="left">
+			<div id="content">
 				<div class="projects">
 					<h3>Билеты по технике безопасности</h3>
 					{% for ticket in ticket_list %}
@@ -30,20 +25,17 @@
 							<img src="{{ ticket.img.url }}" width="200px" alt="" />
 						</div>
 						<div class="text left">
-							<h4><a href="{{ ticket.id }}">{{ ticket.title }}</a></h4>
-							<p align="right"> Автор: {{ ticket.author }}</p>
+							<h2><a href="{{ ticket.id }}">{{ ticket.title }}</a></h2>
 						</div>
 						<div class="cl">&nbsp;</div>
 					</div>
+					<p align="right"> Автор: {{ ticket.author }}</p>
 					{% endfor %}
 				</div>
 			</div>
 			<div class="cl">&nbsp;</div>
 		</div>
-		
-
 	</div>
-	
 	<div id="footer">
 		<p class="copy right">Copyright &copy;  2022 </p>
 	</div>
