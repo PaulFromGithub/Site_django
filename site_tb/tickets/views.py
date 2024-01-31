@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from .form import CommentsForm
-from .models import Ticket, Question
+from .models import Ticket
 
 
 class TicketView(View):
@@ -11,9 +11,8 @@ class TicketView(View):
 
 
 class TicketDetail(View):
-    def get(self, request, pk):
-        ticket = Ticket.objects.get(id=pk)
-        # questions = Question.objects.all()
+    def get(self, request, ticket_slug):
+        ticket = Ticket.objects.get(slug=ticket_slug)
         return render(request, 'site_tb/question.html', {'ticket': ticket})
 
 

@@ -1,8 +1,9 @@
 from django.db import models
-from django.shortcuts import reverse
+from django.urls import reverse
 
 
 class Ticket(models.Model):
+    slug = models.SlugField(max_length=250, unique=True, db_index=True)
     title = models.CharField('Номер билета', max_length=100)
     author = models.CharField('Автор', max_length=100)
     date = models.DateField('Дата публикации')
@@ -15,8 +16,8 @@ class Ticket(models.Model):
     def __str__(self):
         return f'{self.title}'
 
-    # def get_absolute_url(self):
-    #     return reverse('ticket', kwargs={'id': self.id, 'name': self.title})
+    def get_absolute_url(self):
+        return reverse('ticket', kwargs={'ticket_slug': self.slug})
 
 
 class Question(models.Model):
@@ -30,9 +31,6 @@ class Question(models.Model):
 
     def __str__(self):
         return f'{self.text_questions}'
-
-    # def get_absolute_url(self):
-    #     return reverse('question', kwargs={'id': self.id, 'name': self.text_questions})
 
 
 class Answer(models.Model):
