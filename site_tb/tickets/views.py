@@ -21,8 +21,8 @@ class AddComments(View):
         form = CommentsForm(request.POST)
         if form.is_valid():
             form = form.save(commit=False)
-            form.post.id = pk
+            form.post_id = pk
             form.save()
-        return redirect(f'/{pk}')
+        return redirect('/')
 
 

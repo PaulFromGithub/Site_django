@@ -3,6 +3,7 @@ from django.urls import reverse
 
 
 class Ticket(models.Model):
+    objects = None
     slug = models.SlugField(max_length=250, unique=True, db_index=True)
     title = models.CharField('Номер билета', max_length=100)
     author = models.CharField('Автор', max_length=100)

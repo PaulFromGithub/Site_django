@@ -2,9 +2,9 @@
 <html>
 <head>
 	<title>САЙТ ПО ОХРАНЕ ТРУДА</title>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all"/>
-	<link rel="shortcut icon" href="css/images/favicon.ico" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+	<link rel="shortcut icon" href="{% static 'css/images/favicon.ico' %}" />
 </head>
 <body>
 <div class="shell">
@@ -18,57 +18,65 @@
 		<div id="main">
 			<div id="content">
 				<div class="projects">
-					<div class="image left">
+					<h3>Билеты по технике безопасности</h3>
+					<div class="item">
+					    <div class="image left">
 							<h1>{{ ticket.title }}</h1>
 							<br>
 							<img src="{{ ticket.img.url }}" width="100%"/>
+					    </div>
+					    <div class="text left">
+							{% for I in ticket.question_set.all %}
+						<h3>{{ I.text_questions }}</h3>
+							{{ I.answer_set.get }}
+						<br><p>{{ text_answer }}</p>
+                            {% endfor %}
 						</div>
-					<div class="text left">
-							{% for i in ticket.question_set.all %}
-						<h3>{{ i.text_questions }}</h3>
-							{{ i.answer_set.get }}
-						<p>{{ text_answer }}</p>
-						<br>
-							{% endfor %}
-					</div>
 						<div class="cl"> </div>
-				</div>
-			</div>
+				    </div>
+			    </div>
 			<div class="form-comment">
 				<h3>Оставить комментарий</h3>
 				<div>
 					<form action="{% url 'add_comments' ticket.id %}" method="post">
 						{%csrf_token%}
-						<div><label>Ваш комментарий</label></div>
-						<div><textarea name="text_comments" rows="7" cols="100 "></textarea></div>
-						<div>
-							<label>Ваше имя</label>
-							<input type="text" name="name">
+						<div class="comment-title">
+							<label>Ваш комментарий</label>
 						</div>
-						<div>
+						<div><textarea name="text_comments" rows="7" cols="100"></textarea></div>
+						<div class="comment-name">
+							<label>Ваше имя</label>
+							<input type="text" name="name" >
+						</div>
+						<div class="comment-mail">
 							<label>Ваш email</label>
 							<input type="email" name="email">
 						</div>
-						<div><input type="submit"></div>
+						<div class="submit">
+							<input type="submit">
+						</div>
 					</form>
 				</div>
 			</div>
-			<div>{% for comment in ticket.comments_set.all %}
 				<div class = "view-comment">
-				<h4>{{ comment.name  }}</h4>
-				<p>{{ comment.text_comments }}</p>
+			        {% for comment in ticket.comments_set.all %}
+				    <h4>{{ comment.name  }}</h4>
+				    <p>{{ comment.text_comments }}</p>
+					<br>
+					{% endfor %}
 				</div>
-				{% endfor %}
+				<div class="cl">&nbsp;</div>
 			</div>
-			<div class="cl">&nbsp;</div>
 		</div>
-
-
-	</div>
-
 	<div id="footer">
 		<p class="copy right">Copyright &copy;  2023 </p>
+	</div>
 	</div>
 </div>
 </body>
 </html>
+
+
+
+
+

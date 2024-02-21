@@ -4,7 +4,7 @@
 	<title>САЙТ ПО ОХРАНЕ ТРУДА</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
-	<link rel="shortcut icon" href="css/images/favicon.ico" />
+	<link rel="shortcut icon" href="{% static 'css/images/favicon.ico' %}" />
 </head>
 <body>
 <div class="shell">
@@ -21,15 +21,15 @@
 					<h3>Билеты по технике безопасности</h3>
 					{% for ticket in ticket_list %}
 					<div class="item">
-						<div class="image left">
-							<img src="{{ ticket.img.url }}" width="200px" alt="" />
+                        <div class="image left">
+							<img src="{{ ticket.img.url }}" width="600px" alt="" />
 						</div>
-						<div class="text left">
+						<div class="ticket-url" align="right">
 							<h2><a href="{{ ticket.get_absolute_url }}">{{ ticket.title }}</a></h2>
 						</div>
 						<div class="cl">&nbsp;</div>
 					</div>
-					<p align="right"> Автор: {{ ticket.author }}</p>
+					<p align="left"> Автор: {{ ticket.author }}</p>
 					{% endfor %}
 				</div>
 			</div>
